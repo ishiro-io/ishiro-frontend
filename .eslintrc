@@ -1,0 +1,10 @@
+{
+  "extends": ["next", "prettier"],
+  "plugins": ["@typescript-eslint", "prettier"],
+  "settings": {
+    "next": {
+      "rootDir": "apps/next/"
+    }
+  },
+  "root": true
+}
