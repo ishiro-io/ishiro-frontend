@@ -6,5 +6,9 @@
       "rootDir": "apps/next/"
     }
   },
-  "root": true
+  "root": true,
+  "rules": {
+    "jsx-a11y/alt-text": "off",
+    "react/no-unescaped-entities": "off"
+  }
 }

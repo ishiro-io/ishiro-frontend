@@ -4,9 +4,16 @@ import Head from "next/head";
 import React from "react";
 import type { SolitoAppProps } from "solito";
 
-import { Provider } from "app/provider";
+import { useResources } from "shared/hooks";
+import { Provider } from "shared/provider";
 
-function MyApp({ Component, pageProps }: SolitoAppProps) {
+function App({ Component, pageProps }: SolitoAppProps) {
+  const { isFontReady } = useResources();
+
+  if (!isFontReady) {
+    return null;
+  }
+
   return (
     <>
       <Head>
@@ -20,4 +27,4 @@ function MyApp({ Component, pageProps }: SolitoAppProps) {
   );
 }
 
-export default MyApp;
+export default App;

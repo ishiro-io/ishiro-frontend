@@ -1,13 +1,12 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import OnboardingScreen from "app/features/authentication/onboarding-screen";
-
-import { AuthenticationStackParamList } from "../routes";
+import { OnboardingScreen } from "../screens/auth";
+import { AuthenticationStackParamList } from "./Routes";
 
 const AuthenticationStack =
   createNativeStackNavigator<AuthenticationStackParamList>();
 
-const Authentication = () => {
+const AuthenticationNavigator = () => {
   return (
     <AuthenticationStack.Navigator
       initialRouteName="Onboarding"
@@ -21,4 +20,4 @@ const Authentication = () => {
   );
 };
 
-export default Authentication;
+export default AuthenticationNavigator;

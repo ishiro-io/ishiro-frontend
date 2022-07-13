@@ -1,14 +1,13 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { RootStackParamList } from "./Routes";
-import Authentication from "./routes/authentication-navigator";
+import { AuthenticationNavigator, RootStackParamList } from "../routes";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const AppNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Authentication" component={Authentication} />
+      <Stack.Screen name="Authentication" component={AuthenticationNavigator} />
     </Stack.Navigator>
   );
 };

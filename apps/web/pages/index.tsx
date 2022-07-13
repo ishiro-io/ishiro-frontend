@@ -1,3 +1,9 @@
-import OnboardingScreen from "app/features/authentication/onboarding-screen";
+const IndexPage = () => {
+  return (
+    <div>
+      <p>Hello world!</p>
+    </div>
+  );
+};
 
-export default OnboardingScreen;
+export default IndexPage;
