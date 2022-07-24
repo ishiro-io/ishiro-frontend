@@ -9,6 +9,7 @@
   "root": true,
   "rules": {
     "jsx-a11y/alt-text": "off",
-    "react/no-unescaped-entities": "off"
+    "react/no-unescaped-entities": "off",
+    "import/no-anonymous-default-export": "off"
   }
 }

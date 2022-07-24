@@ -11,7 +11,8 @@
     "mobile": "cd apps/mobile && expo start",
     "web": "cd apps/web && yarn next",
     "lint": "eslint \"{apps,packages}/**/*.{ts,tsx}\" --fix",
-    "format": "prettier --write \"{apps,packages}/**/*.{ts,tsx}\""
+    "format": "prettier --write \"{apps,packages}/**/*.{ts,tsx}\"",
+    "generate:graphql": "cd packages/shared && graphql-codegen -r dotenv/config --config codegen.yml"
   },
   "devDependencies": {
     "@types/react": "^17.0.39",

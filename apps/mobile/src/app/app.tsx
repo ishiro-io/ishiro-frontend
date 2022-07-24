@@ -1,33 +1,19 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { View } from "dripsy";
-import * as SplashScreen from "expo-splash-screen";
-import { useCallback } from "react";
+import { ThemeProvider } from "@rneui/themed";
+import Constants from "expo-constants";
 
-import { useResources } from "shared/hooks";
-import { Provider } from "shared/provider";
-
-import AppNavigator from "./app-navigator";
+import { GraphQLProvider } from "shared/lib/graphql";
+import { AppNavigator } from "utils/routes";
+import { theme } from "utils/theme";
 
 const App = () => {
-  const { isFontReady } = useResources();
-
-  const onLayout = useCallback(async () => {
-    if (isFontReady) {
-      await SplashScreen.hideAsync();
-    }
-  }, [isFontReady]);
-
-  if (!isFontReady) {
-    return null;
-  }
-
   return (
     <NavigationContainer>
-      <Provider>
-        <View sx={{ flex: 1 }} onLayout={onLayout}>
+      <ThemeProvider theme={theme}>
+        <GraphQLProvider url={Constants?.manifest?.extra?.apiEndpoint}>
           <AppNavigator />
-        </View>
-      </Provider>
+        </GraphQLProvider>
+      </ThemeProvider>
     </NavigationContainer>
   );
 };

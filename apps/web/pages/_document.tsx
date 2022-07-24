@@ -7,6 +7,7 @@ class CustomDocument extends Document {
     return (
       <Html>
         <Head>
+          <link rel="icon" href="/favicon.ico" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         </Head>
         <body>

@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@expo/next-adapter": "^3.1.20",
+    "@rneui/base": "^4.0.0-rc.5",
+    "@rneui/themed": "^4.0.0-rc.5",
     "next": "12.1.0",
     "next-fonts": "^1.5.1",
     "next-images": "^1.8.4",

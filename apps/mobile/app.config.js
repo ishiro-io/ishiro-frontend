@@ -1,3 +1,5 @@
+import "dotenv/config";
+
 export default {
   expo: {
     name: "Ishiro",
@@ -32,6 +34,9 @@ export default {
     androidNavigationBar: {
       backgroundColor: "#131313"
     },
-    scheme: "ishiro-mobile"
+    scheme: "ishiro-mobile",
+    extra: {
+      apiEndpoint: process.env.EXPO_API_ENDPOINT
+    }
   }
 };

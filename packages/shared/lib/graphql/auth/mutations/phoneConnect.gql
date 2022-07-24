@@ -1,0 +1,8 @@
+mutation phoneConnect($input: PhoneConnectInput!) {
+  phoneConnect(input: $input) {
+    doesUserExists
+    user {
+      ...UserFields
+    }
+  }
+}

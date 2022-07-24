@@ -3,11 +3,24 @@
   "name": "shared",
   "main": "index.ts",
   "dependencies": {
-    "dripsy": "^3.6.0",
+    "@rneui/base": "^4.0.0-rc.5",
+    "@rneui/themed": "^4.0.0-rc.5",
+    "@urql/exchange-graphcache": "^4.4.3",
+    "class-validator": "^0.13.2",
     "expo-app-loading": "^2.0.0",
     "expo-linking": "^3.0.0",
+    "graphql": "^16.5.0",
     "moti": "canary",
-    "solito": "latest"
+    "react-native-size-matters": "^0.4.0",
+    "urql": "^2.2.3"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^2.9.1",
+    "@graphql-codegen/typescript": "^2.7.2",
+    "@graphql-codegen/typescript-operations": "^2.5.2",
+    "@graphql-codegen/typescript-urql": "^3.6.2",
+    "@graphql-codegen/typescript-urql-graphcache": "^2.3.2",
+    "dotenv": "^16.0.1"
   },
   "sideEffects": false
 }

@@ -1,0 +1,16 @@
+overwrite: true
+schema: ${SCHEMA_PATH}
+documents: "lib/graphql/**/*.gql"
+generates:
+  lib/graphql/generated.tsx:
+    config:
+      withHooks: true
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-urql
+      - typescript-urql-graphcache
+hooks:
+  afterAllFileWrite:
+    - prettier --write
+    - eslint --fix

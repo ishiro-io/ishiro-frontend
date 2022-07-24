@@ -9,9 +9,6 @@ const withImages = require("next-images");
 const withFonts = require("next-fonts");
 const withPlugins = require("next-compose-plugins");
 const withTM = require("next-transpile-modules")([
-  "solito",
-  "dripsy",
-  "@dripsy/core",
   "moti",
   "@motify/core",
   "@motify/components",

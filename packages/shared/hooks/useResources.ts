@@ -1,8 +1,10 @@
+import { Asset } from "expo-asset";
 import * as Font from "expo-font";
 import { useEffect, useState } from "react";
 
 export const useResources = () => {
   const [isFontReady, setIsFontReady] = useState(false);
+  const [isLogoReady, setIsLogoReady] = useState(false);
 
   const loadFontAsync = async () => {
     try {
@@ -24,11 +26,25 @@ export const useResources = () => {
     }
   };
 
+  const loadLogoAsync = async () => {
+    try {
+      await Asset.fromModule(
+        require("shared/assets/images/logo.png")
+      ).downloadAsync();
+    } catch (error) {
+      console.log("Logo Load Error:", error);
+    } finally {
+      setIsLogoReady(true);
+    }
+  };
+
   useEffect(() => {
     loadFontAsync();
+    loadLogoAsync();
   }, []);
 
   return {
-    isFontReady
+    isFontReady,
+    isLogoReady
   };
 };
