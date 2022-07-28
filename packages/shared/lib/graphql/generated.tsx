@@ -7,8 +7,8 @@ import {
 import { IntrospectionData } from "@urql/exchange-graphcache/dist/types/ast";
 import gql from "graphql-tag";
 import * as Urql from "urql";
-export type Maybe<T> = T | null;
-export type InputMaybe<T> = Maybe<T>;
+export type Maybe<T> = T | undefined;
+export type InputMaybe<T> = T | undefined;
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K];
 };
@@ -110,115 +110,6 @@ export type AnimeCountAggregate = {
   updatedAt: Scalars["Int"];
 };
 
-export type AnimeCreateInput = {
-  bannerImage?: InputMaybe<Scalars["String"]>;
-  categories?: InputMaybe<CategoryCreateNestedManyWithoutAnimesInput>;
-  coverImage?: InputMaybe<Scalars["String"]>;
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  description?: InputMaybe<Scalars["String"]>;
-  duration?: InputMaybe<Scalars["Int"]>;
-  endDate?: InputMaybe<Scalars["DateTime"]>;
-  episodes?: InputMaybe<EpisodeCreateNestedManyWithoutAnimeInput>;
-  format?: InputMaybe<AnimeFormat>;
-  idAniDB?: InputMaybe<Scalars["Int"]>;
-  idAnilist: Scalars["Int"];
-  idKitsu?: InputMaybe<Scalars["Int"]>;
-  idMal?: InputMaybe<Scalars["Int"]>;
-  isAdult: Scalars["Boolean"];
-  popularityAnilist?: InputMaybe<Scalars["Int"]>;
-  releaseDate?: InputMaybe<Scalars["DateTime"]>;
-  scoreAnilist?: InputMaybe<Scalars["Float"]>;
-  season?: InputMaybe<AnimeSeason>;
-  seasonYear?: InputMaybe<Scalars["Int"]>;
-  status?: InputMaybe<AnimeStatus>;
-  title: Scalars["String"];
-  titleEnglish?: InputMaybe<Scalars["String"]>;
-  titleFrench?: InputMaybe<Scalars["String"]>;
-  titleKanji?: InputMaybe<Scalars["String"]>;
-  titleRomaji?: InputMaybe<Scalars["String"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
-};
-
-export type AnimeCreateNestedManyWithoutCategoriesInput = {
-  connect?: InputMaybe<Array<AnimeWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<
-    Array<AnimeCreateOrConnectWithoutCategoriesInput>
-  >;
-  create?: InputMaybe<Array<AnimeCreateWithoutCategoriesInput>>;
-};
-
-export type AnimeCreateNestedOneWithoutEpisodesInput = {
-  connect?: InputMaybe<AnimeWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<AnimeCreateOrConnectWithoutEpisodesInput>;
-  create?: InputMaybe<AnimeCreateWithoutEpisodesInput>;
-};
-
-export type AnimeCreateOrConnectWithoutCategoriesInput = {
-  create: AnimeCreateWithoutCategoriesInput;
-  where: AnimeWhereUniqueInput;
-};
-
-export type AnimeCreateOrConnectWithoutEpisodesInput = {
-  create: AnimeCreateWithoutEpisodesInput;
-  where: AnimeWhereUniqueInput;
-};
-
-export type AnimeCreateWithoutCategoriesInput = {
-  bannerImage?: InputMaybe<Scalars["String"]>;
-  coverImage?: InputMaybe<Scalars["String"]>;
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  description?: InputMaybe<Scalars["String"]>;
-  duration?: InputMaybe<Scalars["Int"]>;
-  endDate?: InputMaybe<Scalars["DateTime"]>;
-  episodes?: InputMaybe<EpisodeCreateNestedManyWithoutAnimeInput>;
-  format?: InputMaybe<AnimeFormat>;
-  idAniDB?: InputMaybe<Scalars["Int"]>;
-  idAnilist: Scalars["Int"];
-  idKitsu?: InputMaybe<Scalars["Int"]>;
-  idMal?: InputMaybe<Scalars["Int"]>;
-  isAdult: Scalars["Boolean"];
-  popularityAnilist?: InputMaybe<Scalars["Int"]>;
-  releaseDate?: InputMaybe<Scalars["DateTime"]>;
-  scoreAnilist?: InputMaybe<Scalars["Float"]>;
-  season?: InputMaybe<AnimeSeason>;
-  seasonYear?: InputMaybe<Scalars["Int"]>;
-  status?: InputMaybe<AnimeStatus>;
-  title: Scalars["String"];
-  titleEnglish?: InputMaybe<Scalars["String"]>;
-  titleFrench?: InputMaybe<Scalars["String"]>;
-  titleKanji?: InputMaybe<Scalars["String"]>;
-  titleRomaji?: InputMaybe<Scalars["String"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
-};
-
-export type AnimeCreateWithoutEpisodesInput = {
-  bannerImage?: InputMaybe<Scalars["String"]>;
-  categories?: InputMaybe<CategoryCreateNestedManyWithoutAnimesInput>;
-  coverImage?: InputMaybe<Scalars["String"]>;
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  description?: InputMaybe<Scalars["String"]>;
-  duration?: InputMaybe<Scalars["Int"]>;
-  endDate?: InputMaybe<Scalars["DateTime"]>;
-  format?: InputMaybe<AnimeFormat>;
-  idAniDB?: InputMaybe<Scalars["Int"]>;
-  idAnilist: Scalars["Int"];
-  idKitsu?: InputMaybe<Scalars["Int"]>;
-  idMal?: InputMaybe<Scalars["Int"]>;
-  isAdult: Scalars["Boolean"];
-  popularityAnilist?: InputMaybe<Scalars["Int"]>;
-  releaseDate?: InputMaybe<Scalars["DateTime"]>;
-  scoreAnilist?: InputMaybe<Scalars["Float"]>;
-  season?: InputMaybe<AnimeSeason>;
-  seasonYear?: InputMaybe<Scalars["Int"]>;
-  status?: InputMaybe<AnimeStatus>;
-  title: Scalars["String"];
-  titleEnglish?: InputMaybe<Scalars["String"]>;
-  titleFrench?: InputMaybe<Scalars["String"]>;
-  titleKanji?: InputMaybe<Scalars["String"]>;
-  titleRomaji?: InputMaybe<Scalars["String"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
-};
-
 export enum AnimeFormat {
   Movie = "MOVIE",
   Ona = "ONA",
@@ -227,6 +118,12 @@ export enum AnimeFormat {
   Tv = "TV",
   TvShort = "TV_SHORT"
 }
+
+export type AnimeListRelationFilter = {
+  every?: InputMaybe<AnimeWhereInput>;
+  none?: InputMaybe<AnimeWhereInput>;
+  some?: InputMaybe<AnimeWhereInput>;
+};
 
 export type AnimeMaxAggregate = {
   __typename?: "AnimeMaxAggregate";
@@ -286,35 +183,39 @@ export type AnimeMinAggregate = {
   updatedAt?: Maybe<Scalars["DateTime"]>;
 };
 
-export type AnimeScalarWhereInput = {
-  AND?: InputMaybe<Array<AnimeScalarWhereInput>>;
-  NOT?: InputMaybe<Array<AnimeScalarWhereInput>>;
-  OR?: InputMaybe<Array<AnimeScalarWhereInput>>;
-  bannerImage?: InputMaybe<StringNullableFilter>;
-  coverImage?: InputMaybe<StringNullableFilter>;
-  createdAt?: InputMaybe<DateTimeFilter>;
-  description?: InputMaybe<StringNullableFilter>;
-  duration?: InputMaybe<IntNullableFilter>;
-  endDate?: InputMaybe<DateTimeNullableFilter>;
-  format?: InputMaybe<EnumAnimeFormatNullableFilter>;
-  id?: InputMaybe<IntFilter>;
-  idAniDB?: InputMaybe<IntNullableFilter>;
-  idAnilist?: InputMaybe<IntFilter>;
-  idKitsu?: InputMaybe<IntNullableFilter>;
-  idMal?: InputMaybe<IntNullableFilter>;
-  isAdult?: InputMaybe<BoolFilter>;
-  popularityAnilist?: InputMaybe<IntNullableFilter>;
-  releaseDate?: InputMaybe<DateTimeNullableFilter>;
-  scoreAnilist?: InputMaybe<FloatNullableFilter>;
-  season?: InputMaybe<EnumAnimeSeasonNullableFilter>;
-  seasonYear?: InputMaybe<IntNullableFilter>;
-  status?: InputMaybe<EnumAnimeStatusNullableFilter>;
-  title?: InputMaybe<StringFilter>;
-  titleEnglish?: InputMaybe<StringNullableFilter>;
-  titleFrench?: InputMaybe<StringNullableFilter>;
-  titleKanji?: InputMaybe<StringNullableFilter>;
-  titleRomaji?: InputMaybe<StringNullableFilter>;
-  updatedAt?: InputMaybe<DateTimeFilter>;
+export type AnimeOrderByWithRelationInput = {
+  bannerImage?: InputMaybe<SortOrderInput>;
+  categories?: InputMaybe<CategoryOrderByRelationAggregateInput>;
+  coverImage?: InputMaybe<SortOrderInput>;
+  createdAt?: InputMaybe<SortOrder>;
+  description?: InputMaybe<SortOrderInput>;
+  duration?: InputMaybe<SortOrderInput>;
+  endDate?: InputMaybe<SortOrderInput>;
+  episodes?: InputMaybe<EpisodeOrderByRelationAggregateInput>;
+  format?: InputMaybe<SortOrderInput>;
+  id?: InputMaybe<SortOrder>;
+  idAniDB?: InputMaybe<SortOrderInput>;
+  idAnilist?: InputMaybe<SortOrder>;
+  idKitsu?: InputMaybe<SortOrderInput>;
+  idMal?: InputMaybe<SortOrderInput>;
+  isAdult?: InputMaybe<SortOrder>;
+  popularityAnilist?: InputMaybe<SortOrderInput>;
+  releaseDate?: InputMaybe<SortOrderInput>;
+  scoreAnilist?: InputMaybe<SortOrderInput>;
+  season?: InputMaybe<SortOrderInput>;
+  seasonYear?: InputMaybe<SortOrderInput>;
+  status?: InputMaybe<SortOrderInput>;
+  title?: InputMaybe<SortOrder>;
+  titleEnglish?: InputMaybe<SortOrderInput>;
+  titleFrench?: InputMaybe<SortOrderInput>;
+  titleKanji?: InputMaybe<SortOrderInput>;
+  titleRomaji?: InputMaybe<SortOrderInput>;
+  updatedAt?: InputMaybe<SortOrder>;
+};
+
+export type AnimeRelationFilter = {
+  is?: InputMaybe<AnimeWhereInput>;
+  isNot?: InputMaybe<AnimeWhereInput>;
 };
 
 export enum AnimeSeason {
@@ -345,171 +246,37 @@ export type AnimeSumAggregate = {
   seasonYear?: Maybe<Scalars["Int"]>;
 };
 
-export type AnimeUpdateInput = {
-  bannerImage?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  categories?: InputMaybe<CategoryUpdateManyWithoutAnimesNestedInput>;
-  coverImage?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-  description?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  duration?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  endDate?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
-  episodes?: InputMaybe<EpisodeUpdateManyWithoutAnimeNestedInput>;
-  format?: InputMaybe<NullableEnumAnimeFormatFieldUpdateOperationsInput>;
-  idAniDB?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  idAnilist?: InputMaybe<IntFieldUpdateOperationsInput>;
-  idKitsu?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  idMal?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  isAdult?: InputMaybe<BoolFieldUpdateOperationsInput>;
-  popularityAnilist?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  releaseDate?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
-  scoreAnilist?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
-  season?: InputMaybe<NullableEnumAnimeSeasonFieldUpdateOperationsInput>;
-  seasonYear?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  status?: InputMaybe<NullableEnumAnimeStatusFieldUpdateOperationsInput>;
-  title?: InputMaybe<StringFieldUpdateOperationsInput>;
-  titleEnglish?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  titleFrench?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  titleKanji?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  titleRomaji?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-};
-
-export type AnimeUpdateManyMutationInput = {
-  bannerImage?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  coverImage?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-  description?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  duration?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  endDate?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
-  format?: InputMaybe<NullableEnumAnimeFormatFieldUpdateOperationsInput>;
-  idAniDB?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  idAnilist?: InputMaybe<IntFieldUpdateOperationsInput>;
-  idKitsu?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  idMal?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  isAdult?: InputMaybe<BoolFieldUpdateOperationsInput>;
-  popularityAnilist?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  releaseDate?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
-  scoreAnilist?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
-  season?: InputMaybe<NullableEnumAnimeSeasonFieldUpdateOperationsInput>;
-  seasonYear?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  status?: InputMaybe<NullableEnumAnimeStatusFieldUpdateOperationsInput>;
-  title?: InputMaybe<StringFieldUpdateOperationsInput>;
-  titleEnglish?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  titleFrench?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  titleKanji?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  titleRomaji?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-};
-
-export type AnimeUpdateManyWithWhereWithoutCategoriesInput = {
-  data: AnimeUpdateManyMutationInput;
-  where: AnimeScalarWhereInput;
-};
-
-export type AnimeUpdateManyWithoutCategoriesNestedInput = {
-  connect?: InputMaybe<Array<AnimeWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<
-    Array<AnimeCreateOrConnectWithoutCategoriesInput>
-  >;
-  create?: InputMaybe<Array<AnimeCreateWithoutCategoriesInput>>;
-  delete?: InputMaybe<Array<AnimeWhereUniqueInput>>;
-  deleteMany?: InputMaybe<Array<AnimeScalarWhereInput>>;
-  disconnect?: InputMaybe<Array<AnimeWhereUniqueInput>>;
-  set?: InputMaybe<Array<AnimeWhereUniqueInput>>;
-  update?: InputMaybe<Array<AnimeUpdateWithWhereUniqueWithoutCategoriesInput>>;
-  updateMany?: InputMaybe<
-    Array<AnimeUpdateManyWithWhereWithoutCategoriesInput>
-  >;
-  upsert?: InputMaybe<Array<AnimeUpsertWithWhereUniqueWithoutCategoriesInput>>;
-};
-
-export type AnimeUpdateOneRequiredWithoutEpisodesNestedInput = {
-  connect?: InputMaybe<AnimeWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<AnimeCreateOrConnectWithoutEpisodesInput>;
-  create?: InputMaybe<AnimeCreateWithoutEpisodesInput>;
-  update?: InputMaybe<AnimeUpdateWithoutEpisodesInput>;
-  upsert?: InputMaybe<AnimeUpsertWithoutEpisodesInput>;
-};
-
-export type AnimeUpdateWithWhereUniqueWithoutCategoriesInput = {
-  data: AnimeUpdateWithoutCategoriesInput;
-  where: AnimeWhereUniqueInput;
-};
-
-export type AnimeUpdateWithoutCategoriesInput = {
-  bannerImage?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  coverImage?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-  description?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  duration?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  endDate?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
-  episodes?: InputMaybe<EpisodeUpdateManyWithoutAnimeNestedInput>;
-  format?: InputMaybe<NullableEnumAnimeFormatFieldUpdateOperationsInput>;
-  idAniDB?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  idAnilist?: InputMaybe<IntFieldUpdateOperationsInput>;
-  idKitsu?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  idMal?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  isAdult?: InputMaybe<BoolFieldUpdateOperationsInput>;
-  popularityAnilist?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  releaseDate?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
-  scoreAnilist?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
-  season?: InputMaybe<NullableEnumAnimeSeasonFieldUpdateOperationsInput>;
-  seasonYear?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  status?: InputMaybe<NullableEnumAnimeStatusFieldUpdateOperationsInput>;
-  title?: InputMaybe<StringFieldUpdateOperationsInput>;
-  titleEnglish?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  titleFrench?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  titleKanji?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  titleRomaji?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-};
-
-export type AnimeUpdateWithoutEpisodesInput = {
-  bannerImage?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  categories?: InputMaybe<CategoryUpdateManyWithoutAnimesNestedInput>;
-  coverImage?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-  description?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  duration?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  endDate?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
-  format?: InputMaybe<NullableEnumAnimeFormatFieldUpdateOperationsInput>;
-  idAniDB?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  idAnilist?: InputMaybe<IntFieldUpdateOperationsInput>;
-  idKitsu?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  idMal?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  isAdult?: InputMaybe<BoolFieldUpdateOperationsInput>;
-  popularityAnilist?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  releaseDate?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
-  scoreAnilist?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
-  season?: InputMaybe<NullableEnumAnimeSeasonFieldUpdateOperationsInput>;
-  seasonYear?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  status?: InputMaybe<NullableEnumAnimeStatusFieldUpdateOperationsInput>;
-  title?: InputMaybe<StringFieldUpdateOperationsInput>;
-  titleEnglish?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  titleFrench?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  titleKanji?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  titleRomaji?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-};
-
-export type AnimeUpsertWithWhereUniqueWithoutCategoriesInput = {
-  create: AnimeCreateWithoutCategoriesInput;
-  update: AnimeUpdateWithoutCategoriesInput;
-  where: AnimeWhereUniqueInput;
-};
-
-export type AnimeUpsertWithoutEpisodesInput = {
-  create: AnimeCreateWithoutEpisodesInput;
-  update: AnimeUpdateWithoutEpisodesInput;
-};
-
-export type AnimeWhereUniqueInput = {
-  id?: InputMaybe<Scalars["Int"]>;
-  idAnilist?: InputMaybe<Scalars["Int"]>;
-};
-
-export type BoolFieldUpdateOperationsInput = {
-  set?: InputMaybe<Scalars["Boolean"]>;
+export type AnimeWhereInput = {
+  AND?: InputMaybe<Array<AnimeWhereInput>>;
+  NOT?: InputMaybe<Array<AnimeWhereInput>>;
+  OR?: InputMaybe<Array<AnimeWhereInput>>;
+  bannerImage?: InputMaybe<StringNullableFilter>;
+  categories?: InputMaybe<CategoryListRelationFilter>;
+  coverImage?: InputMaybe<StringNullableFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  description?: InputMaybe<StringNullableFilter>;
+  duration?: InputMaybe<IntNullableFilter>;
+  endDate?: InputMaybe<DateTimeNullableFilter>;
+  episodes?: InputMaybe<EpisodeListRelationFilter>;
+  format?: InputMaybe<EnumAnimeFormatNullableFilter>;
+  id?: InputMaybe<IntFilter>;
+  idAniDB?: InputMaybe<IntNullableFilter>;
+  idAnilist?: InputMaybe<IntFilter>;
+  idKitsu?: InputMaybe<IntNullableFilter>;
+  idMal?: InputMaybe<IntNullableFilter>;
+  isAdult?: InputMaybe<BoolFilter>;
+  popularityAnilist?: InputMaybe<IntNullableFilter>;
+  releaseDate?: InputMaybe<DateTimeNullableFilter>;
+  scoreAnilist?: InputMaybe<FloatNullableFilter>;
+  season?: InputMaybe<EnumAnimeSeasonNullableFilter>;
+  seasonYear?: InputMaybe<IntNullableFilter>;
+  status?: InputMaybe<EnumAnimeStatusNullableFilter>;
+  title?: InputMaybe<StringFilter>;
+  titleEnglish?: InputMaybe<StringNullableFilter>;
+  titleFrench?: InputMaybe<StringNullableFilter>;
+  titleKanji?: InputMaybe<StringNullableFilter>;
+  titleRomaji?: InputMaybe<StringNullableFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
 };
 
 export type BoolFilter = {
@@ -544,28 +311,10 @@ export type CategoryCountAggregate = {
   name: Scalars["Int"];
 };
 
-export type CategoryCreateInput = {
-  animes?: InputMaybe<AnimeCreateNestedManyWithoutCategoriesInput>;
-  coverImage?: InputMaybe<Scalars["String"]>;
-  name: Scalars["String"];
-};
-
-export type CategoryCreateNestedManyWithoutAnimesInput = {
-  connect?: InputMaybe<Array<CategoryWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<
-    Array<CategoryCreateOrConnectWithoutAnimesInput>
-  >;
-  create?: InputMaybe<Array<CategoryCreateWithoutAnimesInput>>;
-};
-
-export type CategoryCreateOrConnectWithoutAnimesInput = {
-  create: CategoryCreateWithoutAnimesInput;
-  where: CategoryWhereUniqueInput;
-};
-
-export type CategoryCreateWithoutAnimesInput = {
-  coverImage?: InputMaybe<Scalars["String"]>;
-  name: Scalars["String"];
+export type CategoryListRelationFilter = {
+  every?: InputMaybe<CategoryWhereInput>;
+  none?: InputMaybe<CategoryWhereInput>;
+  some?: InputMaybe<CategoryWhereInput>;
 };
 
 export type CategoryMaxAggregate = {
@@ -582,13 +331,8 @@ export type CategoryMinAggregate = {
   name?: Maybe<Scalars["String"]>;
 };
 
-export type CategoryScalarWhereInput = {
-  AND?: InputMaybe<Array<CategoryScalarWhereInput>>;
-  NOT?: InputMaybe<Array<CategoryScalarWhereInput>>;
-  OR?: InputMaybe<Array<CategoryScalarWhereInput>>;
-  coverImage?: InputMaybe<StringNullableFilter>;
-  id?: InputMaybe<IntFilter>;
-  name?: InputMaybe<StringFilter>;
+export type CategoryOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
 };
 
 export type CategorySumAggregate = {
@@ -596,59 +340,14 @@ export type CategorySumAggregate = {
   id?: Maybe<Scalars["Int"]>;
 };
 
-export type CategoryUpdateInput = {
-  animes?: InputMaybe<AnimeUpdateManyWithoutCategoriesNestedInput>;
-  coverImage?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  name?: InputMaybe<StringFieldUpdateOperationsInput>;
-};
-
-export type CategoryUpdateManyMutationInput = {
-  coverImage?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  name?: InputMaybe<StringFieldUpdateOperationsInput>;
-};
-
-export type CategoryUpdateManyWithWhereWithoutAnimesInput = {
-  data: CategoryUpdateManyMutationInput;
-  where: CategoryScalarWhereInput;
-};
-
-export type CategoryUpdateManyWithoutAnimesNestedInput = {
-  connect?: InputMaybe<Array<CategoryWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<
-    Array<CategoryCreateOrConnectWithoutAnimesInput>
-  >;
-  create?: InputMaybe<Array<CategoryCreateWithoutAnimesInput>>;
-  delete?: InputMaybe<Array<CategoryWhereUniqueInput>>;
-  deleteMany?: InputMaybe<Array<CategoryScalarWhereInput>>;
-  disconnect?: InputMaybe<Array<CategoryWhereUniqueInput>>;
-  set?: InputMaybe<Array<CategoryWhereUniqueInput>>;
-  update?: InputMaybe<Array<CategoryUpdateWithWhereUniqueWithoutAnimesInput>>;
-  updateMany?: InputMaybe<Array<CategoryUpdateManyWithWhereWithoutAnimesInput>>;
-  upsert?: InputMaybe<Array<CategoryUpsertWithWhereUniqueWithoutAnimesInput>>;
-};
-
-export type CategoryUpdateWithWhereUniqueWithoutAnimesInput = {
-  data: CategoryUpdateWithoutAnimesInput;
-  where: CategoryWhereUniqueInput;
-};
-
-export type CategoryUpdateWithoutAnimesInput = {
-  coverImage?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  name?: InputMaybe<StringFieldUpdateOperationsInput>;
-};
-
-export type CategoryUpsertWithWhereUniqueWithoutAnimesInput = {
-  create: CategoryCreateWithoutAnimesInput;
-  update: CategoryUpdateWithoutAnimesInput;
-  where: CategoryWhereUniqueInput;
-};
-
-export type CategoryWhereUniqueInput = {
-  id?: InputMaybe<Scalars["Int"]>;
-};
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: InputMaybe<Scalars["DateTime"]>;
+export type CategoryWhereInput = {
+  AND?: InputMaybe<Array<CategoryWhereInput>>;
+  NOT?: InputMaybe<Array<CategoryWhereInput>>;
+  OR?: InputMaybe<Array<CategoryWhereInput>>;
+  animes?: InputMaybe<AnimeListRelationFilter>;
+  coverImage?: InputMaybe<StringNullableFilter>;
+  id?: InputMaybe<IntFilter>;
+  name?: InputMaybe<StringFilter>;
 };
 
 export type DateTimeFilter = {
@@ -734,59 +433,10 @@ export type EpisodeCountAggregate = {
   updatedAt: Scalars["Int"];
 };
 
-export type EpisodeCreateInput = {
-  airedDate?: InputMaybe<Scalars["DateTime"]>;
-  anime: AnimeCreateNestedOneWithoutEpisodesInput;
-  arcName?: InputMaybe<Scalars["String"]>;
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  isFiller?: InputMaybe<Scalars["Boolean"]>;
-  isRecap?: InputMaybe<Scalars["Boolean"]>;
-  length?: InputMaybe<Scalars["Int"]>;
-  number: Scalars["Int"];
-  title?: InputMaybe<Scalars["String"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
-};
-
-export type EpisodeCreateManyAnimeInput = {
-  airedDate?: InputMaybe<Scalars["DateTime"]>;
-  arcName?: InputMaybe<Scalars["String"]>;
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  id?: InputMaybe<Scalars["Int"]>;
-  isFiller?: InputMaybe<Scalars["Boolean"]>;
-  isRecap?: InputMaybe<Scalars["Boolean"]>;
-  length?: InputMaybe<Scalars["Int"]>;
-  number: Scalars["Int"];
-  title?: InputMaybe<Scalars["String"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
-};
-
-export type EpisodeCreateManyAnimeInputEnvelope = {
-  data: Array<EpisodeCreateManyAnimeInput>;
-  skipDuplicates?: InputMaybe<Scalars["Boolean"]>;
-};
-
-export type EpisodeCreateNestedManyWithoutAnimeInput = {
-  connect?: InputMaybe<Array<EpisodeWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<EpisodeCreateOrConnectWithoutAnimeInput>>;
-  create?: InputMaybe<Array<EpisodeCreateWithoutAnimeInput>>;
-  createMany?: InputMaybe<EpisodeCreateManyAnimeInputEnvelope>;
-};
-
-export type EpisodeCreateOrConnectWithoutAnimeInput = {
-  create: EpisodeCreateWithoutAnimeInput;
-  where: EpisodeWhereUniqueInput;
-};
-
-export type EpisodeCreateWithoutAnimeInput = {
-  airedDate?: InputMaybe<Scalars["DateTime"]>;
-  arcName?: InputMaybe<Scalars["String"]>;
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  isFiller?: InputMaybe<Scalars["Boolean"]>;
-  isRecap?: InputMaybe<Scalars["Boolean"]>;
-  length?: InputMaybe<Scalars["Int"]>;
-  number: Scalars["Int"];
-  title?: InputMaybe<Scalars["String"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+export type EpisodeListRelationFilter = {
+  every?: InputMaybe<EpisodeWhereInput>;
+  none?: InputMaybe<EpisodeWhereInput>;
+  some?: InputMaybe<EpisodeWhereInput>;
 };
 
 export type EpisodeMaxAggregate = {
@@ -819,11 +469,24 @@ export type EpisodeMinAggregate = {
   updatedAt?: Maybe<Scalars["DateTime"]>;
 };
 
-export type EpisodeScalarWhereInput = {
-  AND?: InputMaybe<Array<EpisodeScalarWhereInput>>;
-  NOT?: InputMaybe<Array<EpisodeScalarWhereInput>>;
-  OR?: InputMaybe<Array<EpisodeScalarWhereInput>>;
+export type EpisodeOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
+export type EpisodeSumAggregate = {
+  __typename?: "EpisodeSumAggregate";
+  animeId?: Maybe<Scalars["Int"]>;
+  id?: Maybe<Scalars["Int"]>;
+  length?: Maybe<Scalars["Int"]>;
+  number?: Maybe<Scalars["Int"]>;
+};
+
+export type EpisodeWhereInput = {
+  AND?: InputMaybe<Array<EpisodeWhereInput>>;
+  NOT?: InputMaybe<Array<EpisodeWhereInput>>;
+  OR?: InputMaybe<Array<EpisodeWhereInput>>;
   airedDate?: InputMaybe<DateTimeNullableFilter>;
+  anime?: InputMaybe<AnimeRelationFilter>;
   animeId?: InputMaybe<IntFilter>;
   arcName?: InputMaybe<StringNullableFilter>;
   createdAt?: InputMaybe<DateTimeFilter>;
@@ -836,85 +499,6 @@ export type EpisodeScalarWhereInput = {
   updatedAt?: InputMaybe<DateTimeFilter>;
 };
 
-export type EpisodeSumAggregate = {
-  __typename?: "EpisodeSumAggregate";
-  animeId?: Maybe<Scalars["Int"]>;
-  id?: Maybe<Scalars["Int"]>;
-  length?: Maybe<Scalars["Int"]>;
-  number?: Maybe<Scalars["Int"]>;
-};
-
-export type EpisodeUpdateInput = {
-  airedDate?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
-  anime?: InputMaybe<AnimeUpdateOneRequiredWithoutEpisodesNestedInput>;
-  arcName?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-  isFiller?: InputMaybe<BoolFieldUpdateOperationsInput>;
-  isRecap?: InputMaybe<BoolFieldUpdateOperationsInput>;
-  length?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  number?: InputMaybe<IntFieldUpdateOperationsInput>;
-  title?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-};
-
-export type EpisodeUpdateManyMutationInput = {
-  airedDate?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
-  arcName?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-  isFiller?: InputMaybe<BoolFieldUpdateOperationsInput>;
-  isRecap?: InputMaybe<BoolFieldUpdateOperationsInput>;
-  length?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  number?: InputMaybe<IntFieldUpdateOperationsInput>;
-  title?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-};
-
-export type EpisodeUpdateManyWithWhereWithoutAnimeInput = {
-  data: EpisodeUpdateManyMutationInput;
-  where: EpisodeScalarWhereInput;
-};
-
-export type EpisodeUpdateManyWithoutAnimeNestedInput = {
-  connect?: InputMaybe<Array<EpisodeWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<EpisodeCreateOrConnectWithoutAnimeInput>>;
-  create?: InputMaybe<Array<EpisodeCreateWithoutAnimeInput>>;
-  createMany?: InputMaybe<EpisodeCreateManyAnimeInputEnvelope>;
-  delete?: InputMaybe<Array<EpisodeWhereUniqueInput>>;
-  deleteMany?: InputMaybe<Array<EpisodeScalarWhereInput>>;
-  disconnect?: InputMaybe<Array<EpisodeWhereUniqueInput>>;
-  set?: InputMaybe<Array<EpisodeWhereUniqueInput>>;
-  update?: InputMaybe<Array<EpisodeUpdateWithWhereUniqueWithoutAnimeInput>>;
-  updateMany?: InputMaybe<Array<EpisodeUpdateManyWithWhereWithoutAnimeInput>>;
-  upsert?: InputMaybe<Array<EpisodeUpsertWithWhereUniqueWithoutAnimeInput>>;
-};
-
-export type EpisodeUpdateWithWhereUniqueWithoutAnimeInput = {
-  data: EpisodeUpdateWithoutAnimeInput;
-  where: EpisodeWhereUniqueInput;
-};
-
-export type EpisodeUpdateWithoutAnimeInput = {
-  airedDate?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
-  arcName?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-  isFiller?: InputMaybe<BoolFieldUpdateOperationsInput>;
-  isRecap?: InputMaybe<BoolFieldUpdateOperationsInput>;
-  length?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  number?: InputMaybe<IntFieldUpdateOperationsInput>;
-  title?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-};
-
-export type EpisodeUpsertWithWhereUniqueWithoutAnimeInput = {
-  create: EpisodeCreateWithoutAnimeInput;
-  update: EpisodeUpdateWithoutAnimeInput;
-  where: EpisodeWhereUniqueInput;
-};
-
-export type EpisodeWhereUniqueInput = {
-  id?: InputMaybe<Scalars["Int"]>;
-};
-
 export type FloatNullableFilter = {
   equals?: InputMaybe<Scalars["Float"]>;
   gt?: InputMaybe<Scalars["Float"]>;
@@ -924,14 +508,6 @@ export type FloatNullableFilter = {
   lte?: InputMaybe<Scalars["Float"]>;
   not?: InputMaybe<NestedFloatNullableFilter>;
   notIn?: InputMaybe<Array<Scalars["Float"]>>;
-};
-
-export type IntFieldUpdateOperationsInput = {
-  decrement?: InputMaybe<Scalars["Int"]>;
-  divide?: InputMaybe<Scalars["Int"]>;
-  increment?: InputMaybe<Scalars["Int"]>;
-  multiply?: InputMaybe<Scalars["Int"]>;
-  set?: InputMaybe<Scalars["Int"]>;
 };
 
 export type IntFilter = {
@@ -958,54 +534,10 @@ export type IntNullableFilter = {
 
 export type Mutation = {
   __typename?: "Mutation";
-  createAnime: Anime;
-  createCategory: Category;
-  createEpisode: Episode;
-  createUser: User;
-  deleteAnime: Anime;
-  deleteCategory: Category;
-  deleteEpisode: Episode;
-  deleteUser: User;
   logout: Scalars["Boolean"];
   phoneAskConfirmationCode: Scalars["Boolean"];
   phoneConnect: PhoneConnectOutput;
   phoneRegister: User;
-  updateAnime: Anime;
-  updateCategory: Category;
-  updateEpisode: Episode;
-  updateUser: User;
-};
-
-export type MutationCreateAnimeArgs = {
-  data: AnimeCreateInput;
-};
-
-export type MutationCreateCategoryArgs = {
-  data: CategoryCreateInput;
-};
-
-export type MutationCreateEpisodeArgs = {
-  data: EpisodeCreateInput;
-};
-
-export type MutationCreateUserArgs = {
-  data: UserCreateInput;
-};
-
-export type MutationDeleteAnimeArgs = {
-  where: AnimeWhereUniqueInput;
-};
-
-export type MutationDeleteCategoryArgs = {
-  where: CategoryWhereUniqueInput;
-};
-
-export type MutationDeleteEpisodeArgs = {
-  where: EpisodeWhereUniqueInput;
-};
-
-export type MutationDeleteUserArgs = {
-  where: UserWhereUniqueInput;
 };
 
 export type MutationPhoneAskConfirmationCodeArgs = {
@@ -1018,26 +550,6 @@ export type MutationPhoneConnectArgs = {
 
 export type MutationPhoneRegisterArgs = {
   input: PhoneRegisterInput;
-};
-
-export type MutationUpdateAnimeArgs = {
-  data: AnimeUpdateInput;
-  where: AnimeWhereUniqueInput;
-};
-
-export type MutationUpdateCategoryArgs = {
-  data: CategoryUpdateInput;
-  where: CategoryWhereUniqueInput;
-};
-
-export type MutationUpdateEpisodeArgs = {
-  data: EpisodeUpdateInput;
-  where: EpisodeWhereUniqueInput;
-};
-
-export type MutationUpdateUserArgs = {
-  data: UserUpdateInput;
-  where: UserWhereUniqueInput;
 };
 
 export type NestedBoolFilter = {
@@ -1149,41 +661,10 @@ export type NestedStringNullableFilter = {
   startsWith?: InputMaybe<Scalars["String"]>;
 };
 
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: InputMaybe<Scalars["DateTime"]>;
-};
-
-export type NullableEnumAnimeFormatFieldUpdateOperationsInput = {
-  set?: InputMaybe<AnimeFormat>;
-};
-
-export type NullableEnumAnimeSeasonFieldUpdateOperationsInput = {
-  set?: InputMaybe<AnimeSeason>;
-};
-
-export type NullableEnumAnimeStatusFieldUpdateOperationsInput = {
-  set?: InputMaybe<AnimeStatus>;
-};
-
-export type NullableFloatFieldUpdateOperationsInput = {
-  decrement?: InputMaybe<Scalars["Float"]>;
-  divide?: InputMaybe<Scalars["Float"]>;
-  increment?: InputMaybe<Scalars["Float"]>;
-  multiply?: InputMaybe<Scalars["Float"]>;
-  set?: InputMaybe<Scalars["Float"]>;
-};
-
-export type NullableIntFieldUpdateOperationsInput = {
-  decrement?: InputMaybe<Scalars["Int"]>;
-  divide?: InputMaybe<Scalars["Int"]>;
-  increment?: InputMaybe<Scalars["Int"]>;
-  multiply?: InputMaybe<Scalars["Int"]>;
-  set?: InputMaybe<Scalars["Int"]>;
-};
-
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: InputMaybe<Scalars["String"]>;
-};
+export enum NullsOrder {
+  First = "first",
+  Last = "last"
+}
 
 export type PhoneAskConfirmationCodeInput = {
   phoneNumber: Scalars["String"];
@@ -1211,21 +692,6 @@ export type PhoneAuthCountAggregate = {
   userId: Scalars["Int"];
 };
 
-export type PhoneAuthCreateNestedOneWithoutUserInput = {
-  connect?: InputMaybe<PhoneAuthWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<PhoneAuthCreateOrConnectWithoutUserInput>;
-  create?: InputMaybe<PhoneAuthCreateWithoutUserInput>;
-};
-
-export type PhoneAuthCreateOrConnectWithoutUserInput = {
-  create: PhoneAuthCreateWithoutUserInput;
-  where: PhoneAuthWhereUniqueInput;
-};
-
-export type PhoneAuthCreateWithoutUserInput = {
-  phoneNumber: Scalars["String"];
-};
-
 export type PhoneAuthMaxAggregate = {
   __typename?: "PhoneAuthMaxAggregate";
   id?: Maybe<Scalars["Int"]>;
@@ -1244,30 +710,6 @@ export type PhoneAuthSumAggregate = {
   __typename?: "PhoneAuthSumAggregate";
   id?: Maybe<Scalars["Int"]>;
   userId?: Maybe<Scalars["Int"]>;
-};
-
-export type PhoneAuthUpdateOneWithoutUserNestedInput = {
-  connect?: InputMaybe<PhoneAuthWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<PhoneAuthCreateOrConnectWithoutUserInput>;
-  create?: InputMaybe<PhoneAuthCreateWithoutUserInput>;
-  delete?: InputMaybe<Scalars["Boolean"]>;
-  disconnect?: InputMaybe<Scalars["Boolean"]>;
-  update?: InputMaybe<PhoneAuthUpdateWithoutUserInput>;
-  upsert?: InputMaybe<PhoneAuthUpsertWithoutUserInput>;
-};
-
-export type PhoneAuthUpdateWithoutUserInput = {
-  phoneNumber?: InputMaybe<StringFieldUpdateOperationsInput>;
-};
-
-export type PhoneAuthUpsertWithoutUserInput = {
-  create: PhoneAuthCreateWithoutUserInput;
-  update: PhoneAuthUpdateWithoutUserInput;
-};
-
-export type PhoneAuthWhereUniqueInput = {
-  id?: InputMaybe<Scalars["Int"]>;
-  userId?: InputMaybe<Scalars["Int"]>;
 };
 
 export type PhoneConnectInput = {
@@ -1291,29 +733,19 @@ export type Query = {
   __typename?: "Query";
   anime: Anime;
   animes: Array<Anime>;
-  category: Category;
   categorys: Array<Category>;
-  episode: Episode;
-  episodes: Array<Episode>;
   me?: Maybe<User>;
-  user: User;
-  users: Array<User>;
 };
 
 export type QueryAnimeArgs = {
   id: Scalars["Float"];
 };
 
-export type QueryCategoryArgs = {
-  id: Scalars["Float"];
-};
-
-export type QueryEpisodeArgs = {
-  id: Scalars["Float"];
-};
-
-export type QueryUserArgs = {
-  id: Scalars["Float"];
+export type QueryAnimesArgs = {
+  orderBy?: InputMaybe<Array<AnimeOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  take?: InputMaybe<Scalars["Int"]>;
+  where?: InputMaybe<AnimeWhereInput>;
 };
 
 export enum QueryMode {
@@ -1321,8 +753,14 @@ export enum QueryMode {
   Insensitive = "insensitive"
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: InputMaybe<Scalars["String"]>;
+export enum SortOrder {
+  Asc = "asc",
+  Desc = "desc"
+}
+
+export type SortOrderInput = {
+  nulls?: InputMaybe<NullsOrder>;
+  sort: SortOrder;
 };
 
 export type StringFilter = {
@@ -1378,13 +816,6 @@ export type UserCountAggregate = {
   username: Scalars["Int"];
 };
 
-export type UserCreateInput = {
-  PhoneAuth?: InputMaybe<PhoneAuthCreateNestedOneWithoutUserInput>;
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
-  username: Scalars["String"];
-};
-
 export type UserMaxAggregate = {
   __typename?: "UserMaxAggregate";
   createdAt?: Maybe<Scalars["DateTime"]>;
@@ -1406,15 +837,11 @@ export type UserSumAggregate = {
   id?: Maybe<Scalars["Int"]>;
 };
 
-export type UserUpdateInput = {
-  PhoneAuth?: InputMaybe<PhoneAuthUpdateOneWithoutUserNestedInput>;
-  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-  username?: InputMaybe<StringFieldUpdateOperationsInput>;
-};
-
-export type UserWhereUniqueInput = {
-  id?: InputMaybe<Scalars["Int"]>;
+export type AnimePreviewFieldsFragment = {
+  __typename?: "Anime";
+  id: string;
+  title: string;
+  coverImage?: string | undefined;
 };
 
 export type LogoutMutationVariables = Exact<{ [key: string]: never }>;
@@ -1439,7 +866,7 @@ export type PhoneConnectMutation = {
   phoneConnect: {
     __typename?: "PhoneConnectOutput";
     doesUserExists: boolean;
-    user?: { __typename?: "User"; id: string; username: string } | null;
+    user?: { __typename?: "User"; id: string; username: string } | undefined;
   };
 };
 
@@ -1456,7 +883,42 @@ export type MeQueryVariables = Exact<{ [key: string]: never }>;
 
 export type MeQuery = {
   __typename?: "Query";
-  me?: { __typename?: "User"; id: string; username: string } | null;
+  me?: { __typename?: "User"; id: string; username: string } | undefined;
+};
+
+export type HomePreviewsQueryVariables = Exact<{
+  currentSeason: AnimeSeason;
+  currentYear: Scalars["Int"];
+  nextSeason: AnimeSeason;
+  nextYear: Scalars["Int"];
+}>;
+
+export type HomePreviewsQuery = {
+  __typename?: "Query";
+  season: Array<{
+    __typename?: "Anime";
+    id: string;
+    title: string;
+    coverImage?: string | undefined;
+  }>;
+  nextSeason: Array<{
+    __typename?: "Anime";
+    id: string;
+    title: string;
+    coverImage?: string | undefined;
+  }>;
+  popular: Array<{
+    __typename?: "Anime";
+    id: string;
+    title: string;
+    coverImage?: string | undefined;
+  }>;
+  top: Array<{
+    __typename?: "Anime";
+    id: string;
+    title: string;
+    coverImage?: string | undefined;
+  }>;
 };
 
 export type UserFieldsFragment = {
@@ -1465,6 +927,13 @@ export type UserFieldsFragment = {
   username: string;
 };
 
+export const AnimePreviewFieldsFragmentDoc = gql`
+  fragment AnimePreviewFields on Anime {
+    id
+    title
+    coverImage
+  }
+`;
 export const UserFieldsFragmentDoc = gql`
   fragment UserFields on User {
     id
@@ -1539,6 +1008,61 @@ export function useMeQuery(
   options?: Omit<Urql.UseQueryArgs<MeQueryVariables>, "query">
 ) {
   return Urql.useQuery<MeQuery>({ query: MeDocument, ...options });
+}
+export const HomePreviewsDocument = gql`
+  query homePreviews(
+    $currentSeason: AnimeSeason!
+    $currentYear: Int!
+    $nextSeason: AnimeSeason!
+    $nextYear: Int!
+  ) {
+    season: animes(
+      take: 10
+      skip: 0
+      where: {
+        season: { equals: $currentSeason }
+        seasonYear: { equals: $currentYear }
+      }
+      orderBy: { popularityAnilist: { sort: desc } }
+    ) {
+      ...AnimePreviewFields
+    }
+    nextSeason: animes(
+      take: 10
+      skip: 0
+      where: {
+        season: { equals: $nextSeason }
+        seasonYear: { equals: $nextYear }
+      }
+      orderBy: { popularityAnilist: { sort: desc } }
+    ) {
+      ...AnimePreviewFields
+    }
+    popular: animes(
+      take: 10
+      skip: 0
+      orderBy: { popularityAnilist: { sort: desc } }
+    ) {
+      ...AnimePreviewFields
+    }
+    top: animes(
+      take: 10
+      skip: 0
+      orderBy: { scoreAnilist: { sort: desc, nulls: last } }
+    ) {
+      ...AnimePreviewFields
+    }
+  }
+  ${AnimePreviewFieldsFragmentDoc}
+`;
+
+export function useHomePreviewsQuery(
+  options: Omit<Urql.UseQueryArgs<HomePreviewsQueryVariables>, "query">
+) {
+  return Urql.useQuery<HomePreviewsQuery>({
+    query: HomePreviewsDocument,
+    ...options
+  });
 }
 export type WithTypename<T extends { __typename?: any }> = Partial<T> & {
   __typename: NonNullable<T["__typename"]>;
@@ -1625,43 +1149,18 @@ export type GraphCacheResolvers = {
     >;
     animes?: GraphCacheResolver<
       WithTypename<Query>,
-      Record<string, never>,
+      QueryAnimesArgs,
       Array<WithTypename<Anime> | string>
-    >;
-    category?: GraphCacheResolver<
-      WithTypename<Query>,
-      QueryCategoryArgs,
-      WithTypename<Category> | string
     >;
     categorys?: GraphCacheResolver<
       WithTypename<Query>,
       Record<string, never>,
       Array<WithTypename<Category> | string>
     >;
-    episode?: GraphCacheResolver<
-      WithTypename<Query>,
-      QueryEpisodeArgs,
-      WithTypename<Episode> | string
-    >;
-    episodes?: GraphCacheResolver<
-      WithTypename<Query>,
-      Record<string, never>,
-      Array<WithTypename<Episode> | string>
-    >;
     me?: GraphCacheResolver<
       WithTypename<Query>,
       Record<string, never>,
       WithTypename<User> | string
-    >;
-    user?: GraphCacheResolver<
-      WithTypename<Query>,
-      QueryUserArgs,
-      WithTypename<User> | string
-    >;
-    users?: GraphCacheResolver<
-      WithTypename<Query>,
-      Record<string, never>,
-      Array<WithTypename<User> | string>
     >;
   };
   Anime?: {
@@ -2913,38 +2412,6 @@ export type GraphCacheResolvers = {
 };
 
 export type GraphCacheOptimisticUpdaters = {
-  createAnime?: GraphCacheOptimisticMutationResolver<
-    MutationCreateAnimeArgs,
-    WithTypename<Anime>
-  >;
-  createCategory?: GraphCacheOptimisticMutationResolver<
-    MutationCreateCategoryArgs,
-    WithTypename<Category>
-  >;
-  createEpisode?: GraphCacheOptimisticMutationResolver<
-    MutationCreateEpisodeArgs,
-    WithTypename<Episode>
-  >;
-  createUser?: GraphCacheOptimisticMutationResolver<
-    MutationCreateUserArgs,
-    WithTypename<User>
-  >;
-  deleteAnime?: GraphCacheOptimisticMutationResolver<
-    MutationDeleteAnimeArgs,
-    WithTypename<Anime>
-  >;
-  deleteCategory?: GraphCacheOptimisticMutationResolver<
-    MutationDeleteCategoryArgs,
-    WithTypename<Category>
-  >;
-  deleteEpisode?: GraphCacheOptimisticMutationResolver<
-    MutationDeleteEpisodeArgs,
-    WithTypename<Episode>
-  >;
-  deleteUser?: GraphCacheOptimisticMutationResolver<
-    MutationDeleteUserArgs,
-    WithTypename<User>
-  >;
   logout?: GraphCacheOptimisticMutationResolver<
     Record<string, never>,
     Scalars["Boolean"]
@@ -2961,58 +2428,10 @@ export type GraphCacheOptimisticUpdaters = {
     MutationPhoneRegisterArgs,
     WithTypename<User>
   >;
-  updateAnime?: GraphCacheOptimisticMutationResolver<
-    MutationUpdateAnimeArgs,
-    WithTypename<Anime>
-  >;
-  updateCategory?: GraphCacheOptimisticMutationResolver<
-    MutationUpdateCategoryArgs,
-    WithTypename<Category>
-  >;
-  updateEpisode?: GraphCacheOptimisticMutationResolver<
-    MutationUpdateEpisodeArgs,
-    WithTypename<Episode>
-  >;
-  updateUser?: GraphCacheOptimisticMutationResolver<
-    MutationUpdateUserArgs,
-    WithTypename<User>
-  >;
 };
 
 export type GraphCacheUpdaters = {
   Mutation?: {
-    createAnime?: GraphCacheUpdateResolver<
-      { createAnime: WithTypename<Anime> },
-      MutationCreateAnimeArgs
-    >;
-    createCategory?: GraphCacheUpdateResolver<
-      { createCategory: WithTypename<Category> },
-      MutationCreateCategoryArgs
-    >;
-    createEpisode?: GraphCacheUpdateResolver<
-      { createEpisode: WithTypename<Episode> },
-      MutationCreateEpisodeArgs
-    >;
-    createUser?: GraphCacheUpdateResolver<
-      { createUser: WithTypename<User> },
-      MutationCreateUserArgs
-    >;
-    deleteAnime?: GraphCacheUpdateResolver<
-      { deleteAnime: WithTypename<Anime> },
-      MutationDeleteAnimeArgs
-    >;
-    deleteCategory?: GraphCacheUpdateResolver<
-      { deleteCategory: WithTypename<Category> },
-      MutationDeleteCategoryArgs
-    >;
-    deleteEpisode?: GraphCacheUpdateResolver<
-      { deleteEpisode: WithTypename<Episode> },
-      MutationDeleteEpisodeArgs
-    >;
-    deleteUser?: GraphCacheUpdateResolver<
-      { deleteUser: WithTypename<User> },
-      MutationDeleteUserArgs
-    >;
     logout?: GraphCacheUpdateResolver<
       { logout: Scalars["Boolean"] },
       Record<string, never>
@@ -3028,22 +2447,6 @@ export type GraphCacheUpdaters = {
     phoneRegister?: GraphCacheUpdateResolver<
       { phoneRegister: WithTypename<User> },
       MutationPhoneRegisterArgs
-    >;
-    updateAnime?: GraphCacheUpdateResolver<
-      { updateAnime: WithTypename<Anime> },
-      MutationUpdateAnimeArgs
-    >;
-    updateCategory?: GraphCacheUpdateResolver<
-      { updateCategory: WithTypename<Category> },
-      MutationUpdateCategoryArgs
-    >;
-    updateEpisode?: GraphCacheUpdateResolver<
-      { updateEpisode: WithTypename<Episode> },
-      MutationUpdateEpisodeArgs
-    >;
-    updateUser?: GraphCacheUpdateResolver<
-      { updateUser: WithTypename<User> },
-      MutationUpdateUserArgs
     >;
   };
   Subscription?: {};

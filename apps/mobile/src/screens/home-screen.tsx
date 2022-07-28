@@ -1,4 +1,7 @@
-import { Button, useTheme } from "@rneui/themed";
+import { MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useTheme } from "@rneui/themed";
 import { Image, View } from "react-native";
 import {
   moderateScale,
@@ -6,12 +9,14 @@ import {
 } from "react-native-size-matters";
 
 import { Header } from "components";
-import { useLogoutMutation } from "shared/lib/graphql";
+import { PreviewsList } from "features/home";
+import { StackParamList } from "utils/routes";
 
 export const HomeScreen = () => {
   const { theme } = useTheme();
 
-  const [_, logout] = useLogoutMutation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<StackParamList, "Content">>();
 
   return (
     <View style={{ flex: 1, backgroundColor: theme.colors.background }}>
@@ -26,27 +31,19 @@ export const HomeScreen = () => {
             }}
           />
         }
+        iconRight={
+          <MaterialIcons name="person" size={moderateScale(32)} color="white" />
+        }
+        onIconRightPress={() => navigation.navigate("Profile")}
       />
 
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Button
-          type="outline"
-          buttonStyle={{
-            borderColor: theme.colors.primaryLighter,
-            borderWidth: moderateScale(2, 0.25)
-          }}
-          disabledStyle={{ backgroundColor: theme.colors.grey8 }}
-          containerStyle={{
-            marginBottom: theme.spacing.sm,
-            padding: 0
-          }}
-          titleStyle={{
-            color: theme.colors.white
-          }}
-          onPress={() => logout()}
-        >
-          Se déconnecter
-        </Button>
+      <View
+        style={{
+          marginTop: theme.spacing.md,
+          paddingBottom: theme.spacing["3xl"]
+        }}
+      >
+        <PreviewsList />
       </View>
     </View>
   );

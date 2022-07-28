@@ -5,6 +5,7 @@ generates:
   lib/graphql/generated.tsx:
     config:
       withHooks: true
+      maybeValue: T | undefined
     plugins:
       - typescript
       - typescript-operations

@@ -3,7 +3,7 @@ import { ThemeProvider } from "@rneui/themed";
 import Constants from "expo-constants";
 
 import { GraphQLProvider } from "shared/lib/graphql";
-import { AppNavigator } from "utils/routes";
+import { AppStackNavigator } from "utils/routes";
 import { theme } from "utils/theme";
 
 const App = () => {
@@ -11,7 +11,7 @@ const App = () => {
     <NavigationContainer>
       <ThemeProvider theme={theme}>
         <GraphQLProvider url={Constants?.manifest?.extra?.apiEndpoint}>
-          <AppNavigator />
+          <AppStackNavigator />
         </GraphQLProvider>
       </ThemeProvider>
     </NavigationContainer>

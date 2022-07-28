@@ -1,0 +1,46 @@
+query homePreviews(
+  $currentSeason: AnimeSeason!
+  $currentYear: Int!
+  $nextSeason: AnimeSeason!
+  $nextYear: Int!
+) {
+  season: animes(
+    take: 10
+    skip: 0
+    where: {
+      season: { equals: $currentSeason }
+      seasonYear: { equals: $currentYear }
+    }
+    orderBy: { popularityAnilist: { sort: desc } }
+  ) {
+    ...AnimePreviewFields
+  }
+
+  nextSeason: animes(
+    take: 10
+    skip: 0
+    where: {
+      season: { equals: $nextSeason }
+      seasonYear: { equals: $nextYear }
+    }
+    orderBy: { popularityAnilist: { sort: desc } }
+  ) {
+    ...AnimePreviewFields
+  }
+
+  popular: animes(
+    take: 10
+    skip: 0
+    orderBy: { popularityAnilist: { sort: desc } }
+  ) {
+    ...AnimePreviewFields
+  }
+
+  top: animes(
+    take: 10
+    skip: 0
+    orderBy: { scoreAnilist: { sort: desc, nulls: last } }
+  ) {
+    ...AnimePreviewFields
+  }
+}

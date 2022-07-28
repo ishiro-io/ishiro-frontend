@@ -5,15 +5,13 @@ import { Button, Text, useTheme } from "@rneui/themed";
 import { Image, View } from "react-native";
 import { moderateScale } from "react-native-size-matters";
 
-import { RouteStackParamList } from "utils/routes";
+import { StackParamList } from "utils/routes";
 
 export const OnboardingScreen = () => {
   const { theme } = useTheme();
 
   const navigation =
-    useNavigation<
-      NativeStackNavigationProp<RouteStackParamList, "Onboarding">
-    >();
+    useNavigation<NativeStackNavigationProp<StackParamList, "Onboarding">>();
 
   return (
     <View

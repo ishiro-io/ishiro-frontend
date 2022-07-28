@@ -6,13 +6,13 @@ import { View } from "react-native";
 
 import { DismissKeyboard, Header } from "components";
 import { AskCodeForm } from "features/auth";
-import { RouteStackParamList } from "utils/routes";
+import { StackParamList } from "utils/routes";
 
 export const AskCodeScreen = () => {
   const { theme } = useTheme();
 
   const navigation =
-    useNavigation<NativeStackNavigationProp<RouteStackParamList, "AskCode">>();
+    useNavigation<NativeStackNavigationProp<StackParamList, "AskCode">>();
 
   return (
     <DismissKeyboard>

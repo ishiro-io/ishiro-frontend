@@ -1,0 +1,5 @@
+fragment AnimePreviewFields on Anime {
+  id
+  title
+  coverImage
+}

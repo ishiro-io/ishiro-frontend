@@ -1,4 +1,4 @@
-export type RouteStackParamList = {
+export type StackParamList = {
   Onboarding: undefined;
   AskCode: undefined;
   ConfirmCode: { phoneNumber: string };
@@ -6,5 +6,12 @@ export type RouteStackParamList = {
     phoneNumber?: string;
     code?: string;
   };
+  Content: undefined;
+  Profile: undefined;
+};
+
+export type TabsParamList = {
   Home: undefined;
+  Search: undefined;
+  Categories: undefined;
 };

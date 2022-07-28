@@ -83,6 +83,13 @@ export const theme = createTheme({
       color: colors.white,
       textAlign: "center"
     },
+    h2Style: {
+      fontFamily: "Poppins-Medium",
+      fontWeight: "500",
+      fontSize: moderateScale(20, 0.5),
+      color: colors.white,
+      textAlign: "center"
+    },
     style: {
       fontFamily: "Poppins-Light",
       fontSize: moderateScale(12, 0.25),

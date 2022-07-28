@@ -8,7 +8,7 @@ import { ClearInputButton } from "components";
 import { usePhoneRegisterMutation } from "shared/lib/graphql";
 import { formatGraphQLError } from "shared/utils";
 import yup from "shared/utils/yup-extended";
-import { RouteStackParamList } from "utils/routes";
+import { StackParamList } from "utils/routes";
 
 const CreateProfileSchema = yup.object().shape({
   username: yup.string().required("Un nom d'utilisateur est requis")
@@ -17,7 +17,7 @@ const CreateProfileSchema = yup.object().shape({
 export const CreateProfileForm = () => {
   const { theme } = useTheme();
 
-  const route = useRoute<RouteProp<RouteStackParamList, "CreateProfile">>();
+  const route = useRoute<RouteProp<StackParamList, "CreateProfile">>();
 
   const [responseError, setResponseError] = useState<string | undefined>(
     undefined

@@ -20,7 +20,7 @@ import {
   usePhoneConnectMutation
 } from "shared/lib/graphql";
 import { formatGraphQLError } from "shared/utils";
-import { RouteStackParamList } from "utils/routes";
+import { StackParamList } from "utils/routes";
 
 const CODE_LENGTH = 6;
 
@@ -28,11 +28,9 @@ export const ConfirmCodeForm = () => {
   const { theme } = useTheme();
 
   const navigation =
-    useNavigation<
-      NativeStackNavigationProp<RouteStackParamList, "ConfirmCode">
-    >();
+    useNavigation<NativeStackNavigationProp<StackParamList, "ConfirmCode">>();
 
-  const route = useRoute<RouteProp<RouteStackParamList, "ConfirmCode">>();
+  const route = useRoute<RouteProp<StackParamList, "ConfirmCode">>();
 
   const [value, setValue] = useState("");
   const [responseError, setResponseError] = useState("");

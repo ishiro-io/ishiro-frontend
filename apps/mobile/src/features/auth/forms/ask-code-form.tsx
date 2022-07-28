@@ -12,7 +12,7 @@ import {
 } from "shared/lib/graphql";
 import { formatGraphQLError } from "shared/utils";
 import yup from "shared/utils/yup-extended";
-import { RouteStackParamList } from "utils/routes";
+import { StackParamList } from "utils/routes";
 
 const AskCodeSchema = yup.object().shape({
   phoneNumber: yup.string().phoneNumber()
@@ -22,7 +22,7 @@ export const AskCodeForm = () => {
   const { theme } = useTheme();
 
   const navigation =
-    useNavigation<NativeStackNavigationProp<RouteStackParamList, "AskCode">>();
+    useNavigation<NativeStackNavigationProp<StackParamList, "AskCode">>();
 
   const [responseError, setResponseError] = useState<string | undefined>(
     undefined
